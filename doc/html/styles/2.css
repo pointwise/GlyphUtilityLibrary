@@ -1,0 +1,34 @@
+.SToDoFunction {
+   background-color: rgb(255,200,200);
+   }
+
+.CToDoFunction .Prototype {
+   background-color: rgb(255,200,200);
+   }
+
+.SHiddenFunction {
+   background-color: rgb(175,175,175);
+   }
+
+.CHiddenFunction .Prototype {
+   background-color: rgb(175,175,175);
+   }
+
+.CCode {
+    padding-left: 8ex;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    }
+
+.CParagraph {
+    padding-left: 5ex;
+    text-indent: 0;
+    margin-top: 4px;
+    margin-bottom: 8px; }
+
+/* Background color of main topic bar and index topic bar to match PWI
+   website colorbar */
+#MainTopic .CTitle,
+.IPageTitle {
+    color: #FFFFFF; background-color: #107BEF;
+}

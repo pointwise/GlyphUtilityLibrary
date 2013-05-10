@@ -1,0 +1,70 @@
+Format: 1.52
+
+
+Title: Glyph Utility Library
+SubTitle: Version 1.0
+
+Footer: Copyright (C) 2007-2012 Pointwise, Inc.
+
+# You can add a timestamp to your documentation like one of these:
+# Timestamp: Generated on month day, year
+# Timestamp: Updated mm/dd/yyyy
+# Timestamp: Last updated mon day
+#
+#   m     - One or two digit month.  January is "1"
+#   mm    - Always two digit month.  January is "01"
+#   mon   - Short month word.  January is "Jan"
+#   month - Long month word.  January is "January"
+#   d     - One or two digit day.  1 is "1"
+#   dd    - Always two digit day.  1 is "01"
+#   day   - Day with letter extension.  1 is "1st"
+#   yy    - Two digit year.  2006 is "06"
+#   yyyy  - Four digit year.  2006 is "2006"
+#   year  - Four digit year.  2006 is "2006"
+
+# These are indexes you deleted, so Natural Docs will not add them again
+# unless you remove them from this line.
+
+Don't Index: General, Files
+
+
+# --------------------------------------------------------------------------
+# 
+# Cut and paste the lines below to change the order in which your files
+# appear on the menu.  Don't worry about adding or removing files, Natural
+# Docs will take care of that.
+# 
+# You can further organize the menu by grouping the entries.  Add a
+# "Group: [name] {" line to start a group, and add a "}" to end it.
+# 
+# You can add text and web links to the menu by adding "Text: [text]" and
+# "Link: [name] ([URL])" lines, respectively.
+# 
+# The formatting and comments are auto-generated, so don't worry about
+# neatness when editing the file.  Natural Docs will clean it up the next
+# time it is run.  When working with groups, just deal with the braces and
+# forget about the indentation and comments.
+# 
+# --------------------------------------------------------------------------
+
+
+Function Index: Functions
+
+Group: Entities  {
+
+   File: Block  (no auto-title, blkutil_doc.tcl)
+   File: CAE  (no auto-title, caeutil_doc.tcl)
+   File: Connector  (no auto-title, conutil_doc.tcl)
+   File: Database  (no auto-title, dbutil_doc.tcl)
+   File: Domain Utilities  (domutil_doc.tcl)
+   }  # Group: Entities
+
+Module Index: Module Index
+
+Group: Utilities  {
+
+   File: Cartesian-Cylindrical  (no auto-title, cartcyl_doc.tcl)
+   File: GUI  (no auto-title, guiutil_doc.tcl)
+   }  # Group: Utilities
+
+Link: Pointwise, Inc.  (http://www.pointwise.com)
