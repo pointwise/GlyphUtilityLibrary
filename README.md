@@ -11,7 +11,171 @@ of its higher level functions.
 
 ## Documention of the GUL Functions
 
-Open the file doc/html/index.html in your web browser.
+### Block Utilities
+
+* BlkGetByName
+* BlkGetAll
+* BlkDelete
+* BlkGetPt
+* BlkGetSubs
+* BlkCreateSubBlock
+* BlkStr6Doms
+* BlkStr6Faces
+* BlkStrNormalExtrude
+* BlkStrRotationalExtrude
+* BlkStrTranslationalExtrude
+* BlkStrTranslationalExtrudeSubCons
+* BlkCopyPasteRotate
+* BlkGetDimensions
+* BlkGetFaceDoms
+* BlkGetName
+* BlkJoin
+* BlkNewTRexCondition
+* BlkSetUnsSolverAttrs
+* BlkSetTRexSpacing
+* BlkStrReorient
+* BlkSetName
+* BlkUnsDoms
+* BlkUnsFaces
+* BlkInitialize
+
+### Domain Utilities
+
+* DomDelete
+* DomGetPt
+* DomGetSubs
+* DomCreateSubs
+* DomOnDbEntities
+* DomPeriodicRot
+* DomPeriodicTrans
+* DomStr4Connectors
+* DomStr4Points
+* DomUnsConnectors
+* DomStr4Edges
+* DomUnsEdges
+* DomChangeDisplay
+* DomEllipticSolve
+* DomExtrudeNormal
+* DomGetAll
+* DomGetEdgeConnectors
+* DomInitialize
+* DomJoin
+* DomLinearProjection
+* DomNewTRexCondition
+* DomSetUnsSolverAttrs
+* DomSetTRexSpacing
+* DomProjectClosestPoint
+* DomRotate
+* DomSplit
+* DomUsage
+* DomUnsPoints
+* DomCreateFace
+
+### Connector Utilities
+
+* ConGetNumSub
+* ConMerge
+* ConPeriodicRot
+* ConPeriodicTrans
+* ConAddBreakPt
+* ConCreateConic
+* ConDbArcLengths
+* ConFrom2Points
+* ConFrom3Points
+* ConOnDbEntities
+* ConOnDbSurface
+* ConCalculateSuitableDimension
+* ConDelete
+* ConFindAllAdjacent
+* ConGetAll
+* ConGetBeginSpacing
+* ConGetDimension
+* ConGetEndSpacing
+* ConGetLength
+* ConGetNodeTolerance
+* ConGetXYZatU
+* ConJoin2
+* ConJoinMultiple
+* ConMatchEndpoints
+* ConPointsAreEqual
+* ConProjectClosestPoint
+* ConSetBeginSpacing
+* ConSetDefaultDimension
+* ConSetDimension
+* ConSetEndSpacing
+* ConSetSpacingEqual
+* ConSplit
+* ConCreateEdge
+* ConEdgeFromPoints
+
+### Database Utilities
+
+* DbGetAll
+* DbExtractCurves
+* DbCreateConic
+* DbCreateLine
+* DbCreateSurface
+* DbQuiltFromSurfaces
+* DbRevolve
+* DbAdd2Vectors
+* DbArcLengthToU
+* DbDelete
+* DbEnableDisable
+* DbExportSegment
+* DbGetByName
+* DbGetClosestPoint
+* DbGetExtents
+* DbGetInPlaneAxis
+* DbGetModelSize
+* DbGetNodeTolerance
+* DbGetTangentCylindricalPoint
+* DbGetUatTargetAxial
+* DbGetUatTargetRadius
+* DbGetWithRootName
+* DbGetXYZatU
+* DbImport
+* DbIntersect
+* DbIsolateLayer
+* DbJoin2
+* DbNormalizeVector
+* DbSetLayer
+* DbSetModelSize
+* DbSetNodeTolerance
+* DbSplit
+* DbSubtract2Vectors
+
+### CAE Utilities
+
+* CAEapplyBC
+* CAEcreateBC
+* CAEexportOGA
+* CAEimportOGA
+* CAEset
+* CAEsetOGA
+* CAEsetOGAattribute
+
+### Cartesian-Cylindrical Coordinate Utilities
+
+* CartesianToCylindrical
+* CylindricalToCartesian
+* rta2xyz_x
+* rta2xyz_y
+* rta2xyz_z
+* xyz2rta_x
+* xyz2rta_y
+* xyz2rta_z
+
+### GUI Utilities
+
+* GUIbusy
+* GUIplaceWindow
+* GUIcreateLabelFrame
+* GUIenable
+* GUIgeomFileBrowse
+* GUIhasInteractMode
+* GUIinteractionMode
+* GUItextInsert
+* GUIupdate
 
 ## Use of the GUL
 
