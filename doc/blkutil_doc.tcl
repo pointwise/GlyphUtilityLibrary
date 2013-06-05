@@ -1,99 +1,7 @@
 
-# Module: Block Utilities
+# Module: Block
 
 # Group: Block Creation
-
-###############################################################
-#
-# Proc: BlkGetByName
-#   Obtain the block name.
-#
-# Glyph 1 Parameters:
-#   name          - Block name.
-#
-# Glyph 2 Parameters:
-#   name          - Block name.
-#   
-# Returns:
-#   Block ID.
-#
-###############################################################
-proc BlkGetByName {name} {}
-
-###############################################################
-#
-# Proc: BlkGetAll
-#   Obtain a list of all the existing blocks in a grid.
-#
-# Glyph 1 Parameters: N/A
-#
-# Glyph 2 Parameters: N/A
-#   
-# Returns:
-#   A list of block entities.
-#
-###############################################################
-proc BlkGetByName {} {}
-
-###############################################################
-#
-# Proc: BlkDelete
-#   Delete blocks with an option of special delete specified.
-#
-# Glyph 1 Parameters:
-#    blkList          - A list of blocks.
-#    option           - A string.
-#
-# Glyph 2 Parameters:
-#    blkList          - A list of blocks.
-#    option           - A string.
-#   
-# Returns:
-#   Specified blocks are deleted. If the option is "Special", 
-#   all the parent entities are deleted as well.
-#
-###############################################################
-proc BlkDelete {blkList option} {}
-
-###############################################################
-#
-# Proc: BlkGetPt
-#   Obtain xyz coordinates of a point given an index.
-#
-# Glyph 1 Parameters:
-#    blk              - A block.
-#    ind              - Index of the target point. It must be
-#                       ijk list for structured block and point
-#                       index for unstructured block.
-#
-# Glyph 2 Parameters:
-#    blk              - A block.
-#    ind              - Index of the target point. It must be
-#                       ijk list for structured block and point
-#                       index for unstructured block.
-#   
-# Returns:
-#   XYZ coordinates of the point at the given the index.
-#
-###############################################################
-proc BlkGetPt { blk ind } {}
-
-###############################################################
-#
-# Proc: BlkGetSubs
-#   Obtain a list of the sub-blocks in a given block.
-#
-# Glyph 1 Parameters:
-#    blk              - Target block.
-#
-# Glyph 2 Parameters:
-#    blk              - Target block.
-#   
-# Returns:
-#    A list of sub-blocks.
-#
-###############################################################
-proc BlkGetSubs {blk} {}
 
 ###############################################################
 #
@@ -127,7 +35,7 @@ proc BlkGetSubs {blk} {}
 #     > BL2
 #
 #   Glyph 2 Output
-#     > 
+#     >
 #
 ###############################################################
 proc BlkCreateSubBlock {blk minCornerIJK maxCornerIJK} {}
@@ -152,13 +60,13 @@ proc BlkCreateSubBlock {blk minCornerIJK maxCornerIJK} {}
 #   d4 - pw::DomainStructured object.
 #   d5 - pw::DomainStructured object.
 #   d6 - pw::DomainStructured object.
-# 
+#
 # Glyph 1 Returns:
 #   The new structured block ID.
 #
 # Glyph 2 Returns:
 #   The new pw::BlockStructured object.
-#   
+#
 # Example:
 #   Code
 #     > set blk [BlkStr6Doms $dom_list]
@@ -177,7 +85,7 @@ proc BlkStr6Doms {d1 d2 d3 d4 d5 d6} {}
 #
 # Proc: BlkStr6Faces
 #   Create a structured block from 6 face lists.
-# 
+#
 # Glyph 1 Parameters:
 #   f1 - Structured domain ID.
 #   f2 - Structured domain ID.
@@ -185,7 +93,7 @@ proc BlkStr6Doms {d1 d2 d3 d4 d5 d6} {}
 #   f4 - Structured domain ID.
 #   f5 - Structured domain ID.
 #   f6 - Structured domain ID.
-# 
+#
 # Glyph 2 Parameters:
 #   f1 - pw::FaceStructured object.
 #   f2 - pw::FaceStructured object.
@@ -276,7 +184,7 @@ proc BlkStrNormalExtrude {domList initDs cellGr blDist volSmth expSmooth impSmoo
 
 ###############################################################
 #
-# Proc: BlkStrRotationalExtrude 
+# Proc: BlkStrRotationalExtrude
 #   Create a structured rotational extrusion from a domain.
 #
 # Glyph 1 Parameters:
@@ -321,7 +229,7 @@ proc BlkStrRotationalExtrude {face_dom_list axis angle pts} {}
 
 ###############################################################
 #
-# Proc: BlkStrTranslationalExtrude 
+# Proc: BlkStrTranslationalExtrude
 #   Create a structured translational extrusion from a domain.
 #
 # Glyph 1 Parameters:
@@ -366,7 +274,7 @@ proc BlkStrTranslationalExtrude {dom axis dist pts} {}
 #
 # Proc: BlkStrTranslationalExtrudeSubCons
 #   Create a structured translational extrusion from a domain
-#   using sub cons for dimension and spacing. 
+#   using sub cons for dimension and spacing.
 #
 # Glyph 1 Parameters:
 #   dom     - Structured domain ID.
@@ -401,7 +309,160 @@ proc BlkStrTranslationalExtrude {dom axis dist pts} {}
 ###############################################################
 proc BlkStrTranslationalExtrudeSubCons {dom conList axis} {}
 
+###############################################################
+#
+# Proc: BlkUnsDoms
+#   Create an unstructured block from a list of domains.
+#
+# Glyph 1 Parameters:
+#   domList - List of domains.
+#
+# Glyph 2 Parameters:
+#   domList - List of domains.
+#
+# Glyph 1 Returns:
+#   The new block's ID.
+#
+# Glyph 2 Returns:
+#   The new pw::BlockUnstructured object.
+#
+# Example:
+#   Code
+#     > set unsBlock [gul::BlkUnsDoms $domList]
+#     > puts $unsBlock
+#
+#   Glyph 1 Output
+#     > BL1
+#
+#   Glyph 2 Output
+#     > ::pw::BlockUnstructured_1
+#
+###############################################################
+proc BlkUnsDoms {domList} {}
+
+###############################################################
+#
+# Proc: BlkUnsFaces
+#   Create an unstructured block from a list of faces.
+#
+# Glyph 1 Parameters:
+#   faceList - List of faces.
+#
+# Glyph 2 Parameters:
+#   faceList - List of faces.
+#
+# Glyph 1 Returns:
+#   The new block's ID.
+#
+# Glyph 2 Returns:
+#   The new pw::BlockUnstructured object.
+#
+# Example:
+#   Code
+#     > gul::BlkUnsFaces $faceList
+#
+#   Glyph 1 Output
+#     > BL1
+#
+#   Glyph 2 Output
+#     > ::pw::BlockUnstructured_1
+#
+###############################################################
+proc BlkUnsFacess {faceList} {}
+
 # Group: Block Utilities
+
+###############################################################
+#
+# Proc: BlkGetByName
+#   Obtain the block name.
+#
+# Glyph 1 Parameters:
+#   name          - Block name.
+#
+# Glyph 2 Parameters:
+#   name          - Block name.
+#
+# Returns:
+#   Block ID.
+#
+###############################################################
+proc BlkGetByName {name} {}
+
+###############################################################
+#
+# Proc: BlkGetAll
+#   Obtain a list of all the existing blocks in a grid.
+#
+# Glyph 1 Parameters: N/A
+#
+# Glyph 2 Parameters: N/A
+#
+# Returns:
+#   A list of block entities.
+#
+###############################################################
+proc BlkGetByName {} {}
+
+###############################################################
+#
+# Proc: BlkDelete
+#   Delete blocks with an option of special delete specified.
+#
+# Glyph 1 Parameters:
+#    blkList          - A list of blocks.
+#    option           - A string.
+#
+# Glyph 2 Parameters:
+#    blkList          - A list of blocks.
+#    option           - A string.
+#
+# Returns:
+#   Specified blocks are deleted. If the option is "Special",
+#   all the parent entities are deleted as well.
+#
+###############################################################
+proc BlkDelete {blkList option} {}
+
+###############################################################
+#
+# Proc: BlkGetPt
+#   Obtain xyz coordinates of a point given an index.
+#
+# Glyph 1 Parameters:
+#    blk              - A block.
+#    ind              - Index of the target point. It must be
+#                       ijk list for structured block and point
+#                       index for unstructured block.
+#
+# Glyph 2 Parameters:
+#    blk              - A block.
+#    ind              - Index of the target point. It must be
+#                       ijk list for structured block and point
+#                       index for unstructured block.
+#
+# Returns:
+#   XYZ coordinates of the point at the given the index.
+#
+###############################################################
+proc BlkGetPt { blk ind } {}
+
+###############################################################
+#
+# Proc: BlkGetSubs
+#   Obtain a list of the sub-blocks in a given block.
+#
+# Glyph 1 Parameters:
+#    blk              - Target block.
+#
+# Glyph 2 Parameters:
+#    blk              - Target block.
+#
+# Returns:
+#    A list of sub-blocks.
+#
+###############################################################
+proc BlkGetSubs {blk} {}
 
 ###############################################################
 #
@@ -556,7 +617,7 @@ proc BlkGetName {blk} {}
 #   Glyph 1 Output
 #     >
 #   Glyph 2 Output
-#     > 
+#     >
 #
 ###############################################################
 proc BlkJoin {blks} {}
@@ -606,12 +667,12 @@ proc BlkNewTRexCondition {name type registers} {}
 #
 # Glyph 1 Parameters:
 #   blk        - Block ID.
-#   attributes - List of unstructured solver attributes in the form 
+#   attributes - List of unstructured solver attributes in the form
 #                [list att1 val1 val2 ... valn att2 val1 val2 ...valn att3...]
 #
 # Glyph 2 Parameters:
 #   blk        - pw::DomainUnstructured object.
-#   attributes - List of unstructured solver attributes in the form 
+#   attributes - List of unstructured solver attributes in the form
 #                [list att1 val1 val2 ... valn att2 val1 val2 ...valn att3...]
 #
 # Returns:
@@ -674,7 +735,7 @@ proc BlkSetTRexSpacing {blk domList spacing} {}
 #          Must be an integer with range [0, infinity).
 #   kmin - Face index/boundary to be used as the Kmin Face.
 #          Must be an integer with range [0, infinity).
-# 
+#
 # Glyph 2 Parameters:
 #   blk  - pw::BlockStructured object.
 #   imin - Face index/boundary to be used as the Imin Face.
@@ -726,67 +787,6 @@ proc BlkStrReorient {blk imin jmin kmin} {}
 #
 ###############################################################
 proc BlkSetName {blk name} {}
-
-###############################################################
-#
-# Proc: BlkUnsDoms
-#   Create an unstructured block from a list of domains.
-#
-# Glyph 1 Parameters:
-#   domList - List of domains.
-#
-# Glyph 2 Parameters:
-#   domList - List of domains.
-#
-# Glyph 1 Returns:
-#   The new block's ID.
-#
-# Glyph 2 Returns:
-#   The new pw::BlockUnstructured object.
-#
-# Example:
-#   Code
-#     > set unsBlock [gul::BlkUnsDoms $domList]
-#     > puts $unsBlock
-#
-#   Glyph 1 Output
-#     > BL1
-#
-#   Glyph 2 Output
-#     > ::pw::BlockUnstructured_1
-#
-###############################################################
-proc BlkUnsDoms {domList} {}
-
-###############################################################
-#
-# Proc: BlkUnsFaces
-#   Create an unstructured block from a list of faces.
-#
-# Glyph 1 Parameters:
-#   faceList - List of faces.
-#
-# Glyph 2 Parameters:
-#   faceList - List of faces.
-#
-# Glyph 1 Returns:
-#   The new block's ID.
-#
-# Glyph 2 Returns:
-#   The new pw::BlockUnstructured object.
-#
-# Example:
-#   Code
-#     > gul::BlkUnsFaces $faceList
-#
-#   Glyph 1 Output
-#     > BL1
-#
-#   Glyph 2 Output
-#     > ::pw::BlockUnstructured_1
-#
-###############################################################
-proc BlkUnsFacess {faceList} {}
 
 ###############################################################
 # Proc: BlkInitialize

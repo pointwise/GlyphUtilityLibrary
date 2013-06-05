@@ -1,67 +1,7 @@
 
-# Module: Domain Utilities
+# Module: Domain
 
 # Group: Domain Creation
-
-###############################################################
-#
-# Proc: DomDelete
-#   Delete domains with an option of special delete specified.
-#
-# Glyph 1 Parameters:
-#    domList          - A list of domains.
-#    option           - A string.
-#
-# Glyph 2 Parameters:
-#    domList          - A list of domains.
-#    option           - A string.
-#   
-# Returns:
-#   Specified domains are deleted. If the option is "Special", 
-#   all the parent entities are deleted as well.
-#
-###############################################################
-proc DomDelete {domList option} {}
-
-###############################################################
-#
-# Proc: DomGetPt
-#   Obtain xyz coordinates of a point given an index.
-#
-# Glyph 1 Parameters:
-#    dom              - A domain.
-#    ind              - Index of the target point. It must be
-#                       ij list for structured domain and point
-#                       index for unstructured domain.
-#
-# Glyph 2 Parameters:
-#    dom              - A domain.
-#    ind              - Index of the target point. It must be
-#                       ijk list for structured domain and point
-#                       index for unstructured domain.
-#   
-# Returns:
-#   XYZ coordinates of the point at the given the index.
-#
-###############################################################
-proc DomGetPt { dom ind } {}
-
-###############################################################
-#
-# Proc: DomGetSubs
-#   Obtain a list of the sub-domains in a given domain.
-#
-# Glyph 1 Parameters:
-#    dom              - Target domain.
-#
-# Glyph 2 Parameters:
-#    dom              - Target domain.
-#   
-# Returns:
-#    A list of sub-domains. 
-#
-###############################################################
-proc DomGetSubs {dom} {}
 
 ###############################################################
 #
@@ -70,16 +10,85 @@ proc DomGetSubs {dom} {}
 #
 # Glyph 1 Parameters:
 #    dom              - Target domain.
-#    ijMin            - List of 
+#    ijMin            - List of
 #
 # Glyph 2 Parameters:
 #    dom              - Target domain.
-#   
+#
 # Returns:
-#    A list of sub-domains. 
+#    A list of sub-domains.
 #
 ###############################################################
 proc DomCreateSubs {dom ijMin ijMax} {}
+
+###############################################################
+# Proc: DomUnsPoints
+#   Create an unstructured domain with edges given by
+#   consecutive points in a list.
+#
+# Glyph 1 Parameters:
+#   ptList - List of points. If the first and last points are
+#            not equal (i.e., the list does not define a closed
+#            curve), the first point will be appended to the end
+#            the list. Except possibly the first and last, all
+#            points must be distinct.
+#
+# Glyph 2 Parameters:
+#   ptList - List of points. If the first and last points are
+#            not equal (i.e., the list does not define a closed
+#            curve), the first point will be appended to the end
+#            the list. Except possibly the first and last, all
+#            points must be distinct.
+#
+# Glyph 1 Returns:
+#   The new domain's ID.
+#
+# Glyph 2 Returns:
+#   The new domain object.
+#
+# Example:
+#   Code
+#     > gul::DomUnsPoints [list "0 0 0" "1 0 1" "1 1 1" "0 1 1"]
+#
+#   Glyph 1 Output
+#     > DM1
+#   Glyph 2 Output
+#     > ::pw::DomainUnstructured_1
+#
+###############################################################
+proc DomUnsPoints {ptList} {}
+
+###############################################################
+# Proc: DomCreateFace
+#   Create a face from a list of domains.
+#
+# Glyph 1 Parameters:
+#   domList - List of domain IDs.
+#
+# Glyph 2 Parameters:
+#   domList    - List of pw::Domain objects
+#   structured - Boolean flag to indicate whether the resulting
+#                face is to be structured. The default is
+#                unstructured.
+#
+# Glyph 1 Returns:
+#   0
+#
+# Glyph 2 Returns:
+#   The new pw::FaceStructured or pw::FaceUnstructured object.
+#
+# Example:
+#   Code
+#     > gul::DomCreateFace [list $dom1 $dom2] 1
+#
+#   Glyph 1 Output
+#     > 0
+#
+#   Glyph 2 Output
+#     > ::pw::FaceStructured_1
+#
+###############################################################
+proc DomUnsPoints {ptList} {}
 
 ###############################################################
 #
@@ -97,57 +106,15 @@ proc DomCreateSubs {dom ijMin ijMax} {}
 #    domType             - String of "Structured" or "Unstructured"
 #    splitAng            - Value of the splitting angle
 #    JoinAng             - Value of the joining angle
-#   
+#
 # Returns:
-#    A list of domains that were created on target database. 
+#    A list of domains that were created on target database.
 #
 ###############################################################
 proc DomOnDbEntities { dbList domType splitAng joinAng } {}
 
 ###############################################################
-#
-# Proc: DomPeriodicRot
-#   Get a list of domains created on a list of db entities
-#
-# Glyph 1 Parameters:
-#    domList             - A list of domains.
-#    axisPt1             - The 1st point of the rotation axis.
-#    axisPt2             - The 2nd point of the rotation axis.
-#    rotAngle            - Value of the rotation angle.
-#
-# Glyph 2 Parameters:
-#    domList             - A list of domains.
-#    axisPt1             - The 1st point of the rotation axis.
-#    axisPt2             - The 2nd point of the rotation axis.
-#    rotAngle            - Value of the rotation angle.
-#   
-# Returns:
-#    A list of periodic domains that were created via rotation. 
-#
-###############################################################
-proc DomPeriodicRot {  domList axisPt1 axisPt2 rotAngle } {}
-
-###############################################################
-#
-# Proc: DomPeriodicTrans
-#   Get a list of domains created on a list of db entities
-#
-# Glyph 1 Parameters:
-#    domList             - A list of domains.
-#    offset              - A list of XYZ offset.
-#
-# Glyph 2 Parameters:
-#    domList             - A list of domains.
-#    offset              - A list of XYZ offset.
-#   
-# Returns:
-#    A list of periodic domains that were created via translation. 
-#
-###############################################################
-proc DomPeriodicTrans { domList offset } {}
-
-###############################################################
-# Proc: DomStr4Connectors 
+# Proc: DomStr4Connectors
 #   Create a STRUCTURED domain from 4 connectors.
 #
 # Glyph 1 Parameters:
@@ -184,7 +151,7 @@ proc DomStr4Connectors {c1 c2 c3 c4} {}
 
 ###############################################################
 # Proc: DomStr4Points
-#   Create a STRUCTURED domain from 4 points. Points may be 
+#   Create a STRUCTURED domain from 4 points. Points may be
 #   repeated to form poles.
 #
 # Glyph 1 Parameters:
@@ -250,7 +217,7 @@ proc DomStr4Points {p1 p2 p3 p4} {}
 proc DomUnsConnectors {conList} {}
 
 ###############################################################
-# Proc: DomStr4Edges 
+# Proc: DomStr4Edges
 #   Create a STRUCTURED domain from 4 edge lists.
 #
 # Glyph 1 Parameters:
@@ -313,6 +280,110 @@ proc DomStr4Edges {e1 e2 e3 e4} {}
 #
 ###############################################################
 proc DomUnsEdges {edgeList} {}
+
+# Group: Domain Utilities
+
+###############################################################
+#
+# Proc: DomDelete
+#   Delete domains with an option of special delete specified.
+#
+# Glyph 1 Parameters:
+#    domList          - A list of domains.
+#    option           - A string.
+#
+# Glyph 2 Parameters:
+#    domList          - A list of domains.
+#    option           - A string.
+#
+# Returns:
+#   Specified domains are deleted. If the option is "Special",
+#   all the parent entities are deleted as well.
+#
+###############################################################
+proc DomDelete {domList option} {}
+
+###############################################################
+#
+# Proc: DomGetPt
+#   Obtain xyz coordinates of a point given an index.
+#
+# Glyph 1 Parameters:
+#    dom              - A domain.
+#    ind              - Index of the target point. It must be
+#                       ij list for structured domain and point
+#                       index for unstructured domain.
+#
+# Glyph 2 Parameters:
+#    dom              - A domain.
+#    ind              - Index of the target point. It must be
+#                       ijk list for structured domain and point
+#                       index for unstructured domain.
+#
+# Returns:
+#   XYZ coordinates of the point at the given the index.
+#
+###############################################################
+proc DomGetPt { dom ind } {}
+
+###############################################################
+#
+# Proc: DomGetSubs
+#   Obtain a list of the sub-domains in a given domain.
+#
+# Glyph 1 Parameters:
+#    dom              - Target domain.
+#
+# Glyph 2 Parameters:
+#    dom              - Target domain.
+#
+# Returns:
+#    A list of sub-domains.
+#
+###############################################################
+proc DomGetSubs {dom} {}
+
+###############################################################
+#
+# Proc: DomPeriodicRot
+#   Get a list of periodic domains created via rotation
+#
+# Glyph 1 Parameters:
+#    domList             - A list of domains.
+#    axisPt1             - The 1st point of the rotation axis.
+#    axisPt2             - The 2nd point of the rotation axis.
+#    rotAngle            - Value of the rotation angle.
+#
+# Glyph 2 Parameters:
+#    domList             - A list of domains.
+#    axisPt1             - The 1st point of the rotation axis.
+#    axisPt2             - The 2nd point of the rotation axis.
+#    rotAngle            - Value of the rotation angle.
+#
+# Returns:
+#    A list of periodic domains that were created via rotation.
+#
+###############################################################
+proc DomPeriodicRot {  domList axisPt1 axisPt2 rotAngle } {}
+
+###############################################################
+#
+# Proc: DomPeriodicTrans
+#   Get a list of periodic domains created via translation
+#
+# Glyph 1 Parameters:
+#    domList             - A list of domains.
+#    offset              - A list of XYZ offset.
+#
+# Glyph 2 Parameters:
+#    domList             - A list of domains.
+#    offset              - A list of XYZ offset.
+#
+# Returns:
+#    A list of periodic domains that were created via translation.
+#
+###############################################################
+proc DomPeriodicTrans { domList offset } {}
 
 ###############################################################
 # Proc: DomChangeDisplay
@@ -629,7 +700,7 @@ proc DomLinearProjection {dom db axis} {}
 #                "OFF", "DEFAULT", or a positive real number (GG). Pointwise types
 #                are replaced with their Gridgen equivalents during execution.
 #   name       - Name of the new condition.
-#   attributes - List of unstructured solver attributes in the form 
+#   attributes - List of unstructured solver attributes in the form
 #                [list att1 val1 val2 ... valn att2 val1 val2 ...valn att3...]
 #                The attributes may be either Gridgen or Pointwise attributes
 #                which will be translated into their equivalent commands if
@@ -646,7 +717,7 @@ proc DomLinearProjection {dom db axis} {}
 #                "OFF", "DEFAULT", or a positive real number (GG). Gridgen types
 #                are replaced with their Pointwise equivalents during execution.
 #   name       - Name of the new condition.
-#   attributes - List of unstructured solver attributes in the form 
+#   attributes - List of unstructured solver attributes in the form
 #                [list att1 val1 val2 ... valn att2 val1 val2 ...valn att3...]
 #                The attributes may be either Gridgen or Pointwise attributes
 #                which will be translated into their equivalent commands if
@@ -682,12 +753,12 @@ proc DomNewTRexCondition {domain cons type {name 0} {attributes 0}} {}
 #
 # Glyph 1 Parameters:
 #   domain     - Domain ID.
-#   attributes - List of unstructured solver attributes in the form 
+#   attributes - List of unstructured solver attributes in the form
 #                [list att1 val1 val2 ... valn att2 val1 val2 ...valn att3...]
 #
 # Glyph 2 Parameters:
 #   domain     - pw::DomainUnstructured object
-#   attributes - List of unstructured solver attributes in the form 
+#   attributes - List of unstructured solver attributes in the form
 #                [list att1 val1 val2 ... valn att2 val1 val2 ...valn att3...]
 #
 # Returns:
@@ -868,71 +939,3 @@ proc DomSplit {dom dir index} {}
 ###############################################################
 proc DomUsage {dom} {}
 
-###############################################################
-# Proc: DomUnsPoints
-#   Create an unstructured domain with edges given by 
-#   consecutive points in a list.
-#
-# Glyph 1 Parameters:
-#   ptList - List of points. If the first and last points are
-#            not equal (i.e., the list does not define a closed
-#            curve), the first point will be appended to the end
-#            the list. Except possibly the first and last, all
-#            points must be distinct.
-#
-# Glyph 2 Parameters:
-#   ptList - List of points. If the first and last points are
-#            not equal (i.e., the list does not define a closed
-#            curve), the first point will be appended to the end
-#            the list. Except possibly the first and last, all
-#            points must be distinct.
-#
-# Glyph 1 Returns:
-#   The new domain's ID.
-#
-# Glyph 2 Returns:
-#   The new domain object.
-#
-# Example:
-#   Code
-#     > gul::DomUnsPoints [list "0 0 0" "1 0 1" "1 1 1" "0 1 1"]
-#
-#   Glyph 1 Output
-#     > DM1
-#   Glyph 2 Output
-#     > ::pw::DomainUnstructured_1
-#
-###############################################################
-proc DomUnsPoints {ptList} {}
-
-###############################################################
-# Proc: DomCreateFace
-#   Create a face from a list of domains.
-#
-# Glyph 1 Parameters:
-#   domList - List of domain IDs.
-#
-# Glyph 2 Parameters:
-#   domList    - List of pw::Domain objects
-#   structured - Boolean flag to indicate whether the resulting
-#                face is to be structured. The default is
-#                unstructured.
-#
-# Glyph 1 Returns:
-#   0
-#
-# Glyph 2 Returns:
-#   The new pw::FaceStructured or pw::FaceUnstructured object.
-#
-# Example:
-#   Code
-#     > gul::DomCreateFace [list $dom1 $dom2] 1
-#
-#   Glyph 1 Output
-#     > 0
-#
-#   Glyph 2 Output
-#     > ::pw::FaceStructured_1
-#
-###############################################################
-proc DomUnsPoints {ptList} {}

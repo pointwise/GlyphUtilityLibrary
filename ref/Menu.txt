@@ -56,7 +56,7 @@ Group: Entities  {
    File: CAE  (no auto-title, caeutil_doc.tcl)
    File: Connector  (no auto-title, conutil_doc.tcl)
    File: Database  (no auto-title, dbutil_doc.tcl)
-   File: Domain Utilities  (domutil_doc.tcl)
+   File: Domain  (domutil_doc.tcl)
    }  # Group: Entities
 
 Module Index: Module Index

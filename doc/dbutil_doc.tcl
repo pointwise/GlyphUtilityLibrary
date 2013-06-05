@@ -1,38 +1,7 @@
 
-# Module: Database Utilities
+# Module: Database
 
 # Group: Database Entity Creation
-
-###############################################################
-# Proc: DbGetAll
-#   Return all database entities.
-#
-# Parameters:
-#   None
-#
-# Glyph 1 Returns:
-#   List of database IDs.
-#
-# Glyph 2 Returns:
-#   List of pw::Database objects.
-#
-###############################################################
-proc DbGetAll {} {}
-
-###############################################################
-# Proc: DbExtractCurves
-#   Extract surfaces and curves from a db shell..
-#
-# Glyph 1 Parameters:
-#   db     - List of database shell entity IDs.
-#   angle  - Value of split angle.
-#
-# Glyph 2 Parameters:
-#   db     - List of database shell entity IDs.
-#   angle  - Value of split angle.
-#
-###############################################################
-proc DbExtractCurves { db angle } {}
 
 ###############################################################
 # Proc: DbCreateConic
@@ -169,7 +138,7 @@ proc DbQuiltFromSurfaces {dbEnts {tol 0}} {}
 #   angle - Number of degrees to revolve db.
 #           Must be a float with range (-360.0, 0.0) and (0.0, 360.0).
 #   axis  - Axis to revolve about.  Must be < "X" | "Y" | "Z" >.
-#   
+#
 # Glyph 2 Parameters:
 #   db    - pw::Curve object.
 #   angle - Number of degrees to revolve db.
@@ -196,6 +165,37 @@ proc DbQuiltFromSurfaces {dbEnts {tol 0}} {}
 proc DbRevolve {db angle axis} {}
 
 # Group: Database Entity Utilities
+
+###############################################################
+# Proc: DbGetAll
+#   Return all database entities.
+#
+# Parameters:
+#   None
+#
+# Glyph 1 Returns:
+#   List of database IDs.
+#
+# Glyph 2 Returns:
+#   List of pw::Database objects.
+#
+###############################################################
+proc DbGetAll {} {}
+
+###############################################################
+# Proc: DbExtractCurves
+#   Extract surfaces and curves from a db shell..
+#
+# Glyph 1 Parameters:
+#   db     - List of database shell entity IDs.
+#   angle  - Value of split angle.
+#
+# Glyph 2 Parameters:
+#   db     - List of database shell entity IDs.
+#   angle  - Value of split angle.
+#
+###############################################################
+proc DbExtractCurves { db angle } {}
 
 ###############################################################
 # Proc: DbAdd2Vectors

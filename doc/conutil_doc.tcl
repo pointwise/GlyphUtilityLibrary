@@ -1,43 +1,7 @@
 
-# Module: Connector Utilities
+# Module: Connector
 
 # Group: Connector Creation
-
-###############################################################
-#
-# Proc: ConGetNumSub
-#   Obtain the number of subconnectors of a given connector.
-#
-# Glyph 1 Parameters:
-#    con              - A connector.
-#
-# Glyph 2 Parameters:
-#    con              - A connector.
-#   
-# Returns:
-#   The number of the sub-connectors of the target connector.
-#
-###############################################################
-proc ConGetNumSub { con } {}
-
-###############################################################
-#
-# Proc: ConMerge
-#    Merge connectors given a connector topology preference.
-#
-# Glyph 1 Parameters:
-#    topo             - String of "Free", "All" or "NONMANIFOLD_FREE".
-#    tol              - Merging tolerance.
-#
-# Glyph 2 Parameters:
-#    topo             - String of "Free", "All" or "NONMANIFOLD_FREE".
-#    tol              - Merging tolerance.
-#   
-# Returns:
-#   Nothing.
-#
-###############################################################
-proc ConMerge { topo tol } {}
 
 ###############################################################
 #
@@ -55,9 +19,9 @@ proc ConMerge { topo tol } {}
 #    axisPt1             - The 1st point of the rotation axis.
 #    axisPt2             - The 2nd point of the rotation axis.
 #    rotAngle            - Value of the rotation angle.
-#   
+#
 # Returns:
-#    A list of periodic connectors that were created via rotation. 
+#    A list of periodic connectors that were created via rotation.
 #
 ###############################################################
 proc ConPeriodicRot { conList axisPt1 axisPt2 rotAngle } {}
@@ -74,33 +38,12 @@ proc ConPeriodicRot { conList axisPt1 axisPt2 rotAngle } {}
 # Glyph 2 Parameters:
 #    conList             - A list of connectors.
 #    offset              - A list of XYZ offset.
-#   
+#
 # Returns:
-#    A list of periodic domains that were created via translation. 
+#    A list of periodic domains that were created via translation.
 #
 ###############################################################
 proc ConPeriodicTrans { conList offset } {}
-
-###############################################################
-#
-# Proc: ConAddBreakPt
-#   Add break points at given grid points or arc length ratio.
-#
-# Glyph 1 Parameters:
-#    con                 - A connector.
-#    type                - String of "X", "Y", "Z" or "ARC".
-#    locList             - Value of X, Y, Z or length ratio.
-#
-# Glyph 2 Parameters:
-#    con                 - A connector.
-#    type                - String of "X", "Y", "Z" or "ARC".
-#    locList             - Value of X, Y, Z or length ratio.
-#   
-# Returns:
-#    Nothing. 
-#
-###############################################################
-proc ConAddBreakPt { con type locList } {}
 
 ###############################################################
 # Proc: ConCreateConic
@@ -320,7 +263,122 @@ proc ConOnDbEntities { dbEnts {angle 0} } {}
 ###############################################################
 proc ConOnDbSurface { db_id uv1 uv2 } {}
 
+###############################################################
+# Proc: ConCreateEdge
+#   Create an edge from a list of connectors.
+#
+# Glyph 1 Parameters:
+#   conList - List of connector IDs.
+#
+# Glyph 2 Parameters:
+#   conList - List of pw::Connector objects.
+#
+# Glyph 1 Returns:
+#   List of IDs of connectors in the edge.
+#
+# Glyph 2 Returns:
+#   The new pw::Edge object.
+#
+# Example:
+#   Code
+#     > gul::ConCreateEdge [list $con1 $con2]
+#
+#   Glyph 1 Output
+#     > CN12 CN13 CN14
+#
+#   Glyph 2 Output
+#     > ::pw::Edge_1
+#
+###############################################################
+proc ConCreateEdge {conList} {}
+
+###############################################################
+# Proc: ConEdgeFromPoints
+#   Create a piecewise linear edge from a list of points.
+#
+# Glyph 1 Parameters:
+#   ptList - List of points.
+#
+# Glyph 2 Parameters:
+#   ptList - List of points.
+#
+# Glyph 1 Returns:
+#   List of IDs of connectors in the edge.
+#
+# Glyph 2 Returns:
+#   The new pw::Edge object.
+#
+# Example:
+#   Code
+#     > gul::ConEdgeFromPoints [list $point1 $point2 $point3]
+#
+#   Glyph 1 Output
+#     > CN22 CN23
+#
+#   Glyph 2 Output
+#     > ::pw::Edge_3
+#
+###############################################################
+proc ConEdgeFromPoints {ptList} {}
+
 # Group: Connector Utilties
+
+###############################################################
+#
+# Proc: ConAddBreakPt
+#   Add break points at given grid points or arc length ratio.
+#
+# Glyph 1 Parameters:
+#    con                 - A connector.
+#    type                - String of "X", "Y", "Z" or "ARC".
+#    locList             - Value of X, Y, Z or length ratio.
+#
+# Glyph 2 Parameters:
+#    con                 - A connector.
+#    type                - String of "X", "Y", "Z" or "ARC".
+#    locList             - Value of X, Y, Z or length ratio.
+#
+# Returns:
+#    Nothing.
+#
+###############################################################
+proc ConAddBreakPt { con type locList } {}
+
+###############################################################
+#
+# Proc: ConGetNumSub
+#   Obtain the number of subconnectors of a given connector.
+#
+# Glyph 1 Parameters:
+#    con              - A connector.
+#
+# Glyph 2 Parameters:
+#    con              - A connector.
+#
+# Returns:
+#   The number of the sub-connectors of the target connector.
+#
+###############################################################
+proc ConGetNumSub { con } {}
+
+###############################################################
+#
+# Proc: ConMerge
+#    Merge connectors given a connector topology preference.
+#
+# Glyph 1 Parameters:
+#    topo             - String of "Free", "All" or "NONMANIFOLD_FREE".
+#    tol              - Merging tolerance.
+#
+# Glyph 2 Parameters:
+#    topo             - String of "Free", "All" or "NONMANIFOLD_FREE".
+#    tol              - Merging tolerance.
+#
+# Returns:
+#   Nothing.
+#
+###############################################################
+proc ConMerge { topo tol } {}
 
 ###############################################################
 # Proc: ConCalculateSuitableDimension
@@ -909,7 +967,7 @@ proc ConSetEndSpacing { con spacing } {}
 
 ###############################################################
 # Proc: ConSetSpacingEqual
-#   Set connector's spacing equal. 
+#   Set connector's spacing equal.
 #
 # Glyph 1 Parameters:
 #   con - Connector ID.
@@ -965,62 +1023,4 @@ proc ConSetSpacingEqual {con} {}
 #
 ###############################################################
 proc ConSplit {con val const} {}
-
-###############################################################
-# Proc: ConCreateEdge
-#   Create an edge from a list of connectors.
-#
-# Glyph 1 Parameters:
-#   conList - List of connector IDs.
-#
-# Glyph 2 Parameters:
-#   conList - List of pw::Connector objects.
-#
-# Glyph 1 Returns:
-#   List of IDs of connectors in the edge.
-#
-# Glyph 2 Returns:
-#   The new pw::Edge object.
-#
-# Example:
-#   Code
-#     > gul::ConCreateEdge [list $con1 $con2]
-#
-#   Glyph 1 Output
-#     > CN12 CN13 CN14
-#
-#   Glyph 2 Output
-#     > ::pw::Edge_1
-#
-###############################################################
-proc ConCreateEdge {conList} {}
-
-###############################################################
-# Proc: ConEdgeFromPoints
-#   Create a piecewise linear edge from a list of points.
-#
-# Glyph 1 Parameters:
-#   ptList - List of points.
-#
-# Glyph 2 Parameters:
-#   ptList - List of points.
-#
-# Glyph 1 Returns:
-#   List of IDs of connectors in the edge.
-#
-# Glyph 2 Returns:
-#   The new pw::Edge object.
-#
-# Example:
-#   Code
-#     > gul::ConEdgeFromPoints [list $point1 $point2 $point3]
-#
-#   Glyph 1 Output
-#     > CN22 CN23
-#
-#   Glyph 2 Output
-#     > ::pw::Edge_3
-#
-###############################################################
-proc ConEdgeFromPoints {ptList} {}
 
