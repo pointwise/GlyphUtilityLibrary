@@ -4,7 +4,7 @@ Format: 1.52
 Title: Glyph Utility Library
 SubTitle: Version 1.0
 
-Footer: Copyright (C) 2007-2012 Pointwise, Inc.
+Footer: Copyright (C) 2021 Cadence Design Systems, Inc.
 
 # You can add a timestamp to your documentation like one of these:
 # Timestamp: Generated on month day, year
